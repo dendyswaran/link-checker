@@ -15,14 +15,14 @@ async function testLinkRedirect(sourceLink, targetLink) {
       },
     });
     // Check if the final URL after all redirects matches the target link.
+    console.log(`[${sourceLink}] done`);
     return {
       isMatch: response.request.res.responseUrl === targetLink,
       result: response.request.res.responseUrl,
     };
   } catch (error) {
     console.error(
-      `Error testing link redirect from ${sourceLink} to ${targetLink}:`,
-      error
+      `Error testing link redirect from ${sourceLink} to ${targetLink}`
     );
     return {
       isMatch: false,
