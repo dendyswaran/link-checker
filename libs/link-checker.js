@@ -24,10 +24,18 @@ async function testLinkRedirect(sourceLink, targetLink) {
     console.error(
       `Error testing link redirect from ${sourceLink} to ${targetLink}`
     );
-    return {
-      isMatch: false,
-      result: "N/A",
-    };
+
+    if (error && error.response) {
+      return {
+        isMatch: false,
+        result: `${error?.response?.status} (${error?.response?.statusText})`,
+      };
+    } else {
+      return {
+        isMatch: false,
+        result: `N/A`,
+      };
+    }
   }
 }
 
